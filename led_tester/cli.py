@@ -7,8 +7,8 @@ import click
 
 @click.command()
 @click.option("--input", default=None, help="input URI(file or URL)")
-def main(args=None):
-    """Console script for assignment3."""
+def main(input=None): 
+	"""Console script for assignment3."""
 	print ("input", input)
 	return 0
 
