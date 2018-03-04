@@ -6,7 +6,6 @@ import sys
 sys.path.append('.')
 import pytest
 from click.testing import CliRunner
-from comp30670assn3 import assignment3
 from assignment3 import assignment3
 from assignment3 import cli
 from assignment3 import utils
