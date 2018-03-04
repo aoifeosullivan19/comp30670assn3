@@ -1,14 +1,20 @@
+import urllib.request
+import requests
+import sys
+
 def parseFile(input):
 	if input.startswith('http'):
-		# use requests
-		pass
+		uri=input
+		req=urllib.request.urlopen(uri)
+		buff=req.read().decode('utf-8')
+		r = requests.get(uri).text                     
+		print('\n'.join(r.split('\n')[:5]))
 	else:
-		# read from disk
-		N, instructions = None, []
-		with open (input, 'r') as f:
-			N = int(f.readline())
+		filename = "data/data.txt"
+		with open (filename) as f:
 			for line in f.readlines():
-				instructions.append(line)
-		# haven't written the code yet
-		return N, instructions
-	return
+				values = line.strip().split()
+			return
+
+input = sys.argv[1]
+parseFile(input)

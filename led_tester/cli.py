@@ -7,7 +7,7 @@ import sys
 click.disable_unicode_literals_warning=True
 
 @click.command()
-@click.option("--input", default=None, help="input URI(file or URL)")
+@click.option("--input", default='input.txt', help="input URI(file or URL)")
 def main(input=None): 
 	"""Console script for assignment3."""
 	print ("input", input)
