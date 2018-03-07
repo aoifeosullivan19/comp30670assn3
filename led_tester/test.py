@@ -13,12 +13,26 @@ class LED:
             r = requests.get(uri).text
             for line in r:
                 lines=('\n'.join(r.split('\n')))
-                pat=re.compile(".*(turn on|turn off|switch)\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*through\s*([+-]?\d+)\s*,\s*([+-]?\d+).*")
-                if lines == pat:
-                    print("yay")
-                else:
-                    print ("no")
-            
+            print (lines.split('\n')[1])
+            numbers=[int(s) for s in re.findall(r'\b\d+\b', lines.split('\n')[1])]
+            x1=numbers[0]
+            y1=numbers[1]
+            x2=numbers[2]
+            y2=numbers[3]    
+               
+            str1='turn on'
+            str2='turn off'
+            str3='switch'
+            def turn_on(x1, y1, x2, y2):
+                x_values = [True for i in range(x1, x2)]
+                y_values = [True for i in range(y1, y2)]
+                return sum(x_values +  y_values)
+            match1=re.search(r'turn on', lines[1])
+            match1=re.findall(r'.*(turn on)\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*through\s*([+-]?\d+)\s*,\s*([+-]?\d+).*', lines.split('\n')[1])
+            match2=re.search(r'values[1]', str2)
+            match3=re.search(r'values[1]', str3)
+            if match1:
+                return turn_on(x1, y1, x2, y2)
         else:
             filename = sys.argv[1]
             with open (filename) as f:
