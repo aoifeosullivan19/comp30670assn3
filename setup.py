@@ -36,6 +36,7 @@ setup(
     entry_points={
         'console_scripts': [
             'assignment3=assignment3.cli:main',
+            'solve_led=assignment3.led_tester.led_tester.py'
         ],
     },
     install_requires=requirements,
